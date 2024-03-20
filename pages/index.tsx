@@ -1,8 +1,8 @@
 import HeaderNoAuth from "@/components/headerNoAuth";
 import Head from "next/head";
 import styles from "../styles/homeNoAuth.module.scss";
-import PresentationSection from "@/components/homeNoAuth/presentationSection/presentationSection";
-import CardsSection from "@/components/homeNoAuth/cardsSection/cardsSection";
+import PresentationSection from "@/components/homeNoAuth/presentationSection/index";
+import CardsSection from "@/components/homeNoAuth/cardsSection/index";
 
 
 const HomeNotAuth = function () {
