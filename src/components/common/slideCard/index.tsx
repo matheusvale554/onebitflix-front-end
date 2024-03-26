@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./style.module.scss"
 import { CourseType } from "@/services/courseService";
+
 interface props {
   course:CourseType;
 }
