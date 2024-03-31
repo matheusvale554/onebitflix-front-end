@@ -9,7 +9,7 @@ const HeaderNoAuth = function () {
     <img src="/homeNoAuth/logoCta.png" alt="logoCta" className={styles.imgCta}/>
 	</div>
     <Container className={styles.nav}> 
-        <img src="/logoOnebitflix (1).svg" alt="logoOnebitflix" className={styles.imgLogoNav}/>
+        <img src="/logoRegister.svg" alt="logoOnebitflix" className={styles.imgLogoNav}/>
         <div>
             <Link href="/login"><Button className={styles.navBtn} outline >Entrar</Button></Link>
             <Link href="/register"><Button  className={styles.navBtn} outline >Registrar</Button></Link>
