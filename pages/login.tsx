@@ -14,6 +14,12 @@ const Login = function () {
     const [toastIsOpen, setToastIsOpen] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
 
+    useEffect(() => {
+        if (sessionStorage.getItem("onebitflix-token")) {
+            router.push("/home");
+        }
+
+    }, []);
 
     useEffect(() => {
         const registerSucess = router.query.registred;
@@ -31,22 +37,22 @@ const Login = function () {
     const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
-	const email = formData.get("email")!.toString();
-	const password = formData.get("password")!.toString();
-	const params = { email, password };
+        const email = formData.get("email")!.toString();
+        const password = formData.get("password")!.toString();
+        const params = { email, password };
 
-    const { status } = await authService.login(params);
+        const { status } = await authService.login(params);
 
-    if (status === 200) {
-        router.push("/home");
-    } else {
-      setToastColor("bg-danger");
-      setToastIsOpen(true);
-      setTimeout(() => {
-          setToastIsOpen(false);
-      }, 1000 * 3);
-      setToastMessage("Email ou senha incorretos!");
-    }
+        if (status === 200) {
+            router.push("/home");
+        } else {
+            setToastColor("bg-danger");
+            setToastIsOpen(true);
+            setTimeout(() => {
+                setToastIsOpen(false);
+            }, 1000 * 3);
+            setToastMessage("Email ou senha incorretos!");
+        }
     }
 
     return (
