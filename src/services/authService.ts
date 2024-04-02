@@ -39,7 +39,7 @@ const authService = {
       }
     
       return res;
-    }
+    },
   };
   
   export default authService;
