@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import HeaderAuth from "@/components/homeAuth";
 import FeaturedSection from "@/components/homeAuth/featuredSection";
 import NewestCategory from "@/components/homeAuth/newestCategory";
+import FavoriteCategory from "@/components/headerNoAuth/favoriteCategory";
 
 const HomeAuth = function () {
   const router = useRouter()
@@ -21,6 +22,7 @@ const HomeAuth = function () {
       <main>
         <FeaturedSection/>
         <NewestCategory />
+        <FavoriteCategory/>
       </main>
     </>
   );
