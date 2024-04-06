@@ -5,6 +5,7 @@ import HeaderAuth from "@/components/homeAuth";
 import FeaturedSection from "@/components/homeAuth/featuredSection";
 import NewestCategory from "@/components/homeAuth/newestCategory";
 import FavoriteCategory from "@/components/headerNoAuth/favoriteCategory";
+import FeaturedCategory from "@/components/homeAuth/featuredCategory";
 
 const HomeAuth = function () {
   const router = useRouter()
@@ -23,6 +24,7 @@ const HomeAuth = function () {
         <FeaturedSection/>
         <NewestCategory />
         <FavoriteCategory/>
+        <FeaturedCategory/>
       </main>
     </>
   );
