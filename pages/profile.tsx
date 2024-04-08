@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/profile.module.scss";
 import UserFrom from "@/components/profile/user";
-import HeaderAuth from "@/components/homeAuth";
+import HeaderAuth from "@/components/common/headerAuth";
 import { Button, Col, Container, Row } from "reactstrap";
 import Footer from "@/components/common/footer";
 
@@ -17,7 +17,7 @@ const UserInfo = function () {
         <HeaderAuth/>
         </div>
         
-        <Container calssName="py-5">
+        <Container className="py-5">
 		<p className={styles.title}>Minha Conta</p>
     <Row className="pt-3 pb-5">
 	    <Col md={4} className={styles.btnColumn}>

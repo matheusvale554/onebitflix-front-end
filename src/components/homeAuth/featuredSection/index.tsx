@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import styles from "./styles.module.scss";
 import courseService, { CourseType } from "@/services/courseService";
-import HeaderAuth from "..";
+import HeaderAuth from "../../common/headerAuth";
 import { Button, Container } from "reactstrap";
 import Link from "next/link";
 
