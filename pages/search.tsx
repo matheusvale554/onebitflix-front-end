@@ -35,7 +35,7 @@ useEffect(() => {
         <div className={styles.header}>
           <HeaderAuth />
         </div>
-        <section className={styles.mainContent}>
+        <section className={styles.searchContainer}>
           {searchResult.length >= 1 ? (
             <Container className="d-flex flex-wrap justify-content-center gap-5 py-4">
               {searchResult?.map((course) => (
@@ -43,7 +43,9 @@ useEffect(() => {
               ))}
             </Container>
           ) : (
+            <div className={styles.searchContainer}>
             <p className={styles.noSearchText}>Nenhum resultado encontrado!</p>
+            </div>
           )}
         </section>
         <div className={styles.footer}>
