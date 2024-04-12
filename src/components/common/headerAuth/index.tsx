@@ -65,7 +65,7 @@ return <>
 				/>
 			</Form>
 			<img
-				src="homeAuth/iconSearch.svg"
+				src="/homeAuth/iconSearch.svg"
 				alt="lupaHeader"
 				className={styles.searchImg}
 				onClick={handleSearchClick}

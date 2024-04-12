@@ -45,10 +45,11 @@ export type EpisodeType = {
       
          return res;
       },
-      addToFav: async (courseId:number|string)=>{
+
+      addToFav: async (courseId:number | string)=>{
         const token = sessionStorage.getItem("onebitflix-token")
 
-        const res = await api.post("/favorites", {courseId}, {
+        const res = await api.post("/favorites",{courseId}, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -69,7 +70,8 @@ export type EpisodeType = {
         const res = await api.delete("/favorites", {
             headers: {
               Authorization: `Bearer ${token}`,
-            }
+            },
+            data: {courseId},
           })
           .catch((error) => {
             console.log(error.response.data.message);
@@ -79,6 +81,7 @@ export type EpisodeType = {
       
           return res;
       },
+
       getFavCourses: async () => {
         const token = sessionStorage.getItem("onebitflix-token");
       
@@ -96,13 +99,13 @@ export type EpisodeType = {
       
           return res;
       },
-      like: async (courseId: number | string) => {
+
+      like: async (courseId: number| string) => {
         const token = sessionStorage.getItem("onebitflix-token");
-      
         const res = await api
         .post(
           "likes",
-          { courseId },
+          {courseId},
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -117,7 +120,8 @@ export type EpisodeType = {
       
         return res;
       },
-      removeLike: async (courseId: number | string) => {
+
+      removeLike: async (courseId: number| string) => {
         const token = sessionStorage.getItem("onebitflix-token");
       
         const res = await api
@@ -125,7 +129,7 @@ export type EpisodeType = {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          data: { courseId },
+          data: {courseId},
         })
         .catch((error) => {
           console.log(error.response.data.message);
@@ -135,6 +139,7 @@ export type EpisodeType = {
       
         return res;
       },
+
       getSearch: async (name: string) => {
         const token = sessionStorage.getItem("onebitflix-token");
         const res = await api
@@ -151,6 +156,7 @@ export type EpisodeType = {
       
         return res;
       },
+
       getEpisodes: async (id: number | string) => {
         const token = sessionStorage.getItem("onebitflix-token");
 

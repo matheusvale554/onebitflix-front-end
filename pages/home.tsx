@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import HeaderAuth from "@/components/homeAuth";
+import HeaderAuth from "@/components/common/headerAuth"
 import FeaturedSection from "@/components/homeAuth/featuredSection";
 import NewestCategory from "@/components/homeAuth/newestCategory";
 import FavoriteCategory from "@/components/headerNoAuth/favoriteCategory";
