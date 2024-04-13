@@ -5,6 +5,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import courseService, { CourseType } from "@/services/courseService";
 import { Button, Container } from "reactstrap";
+import PageSpinner from "@/components/common/spinner";
+import EpisodeList from "@/components/episodeList";
+import Footer from "@/components/common/footer";
 
 
 const CoursePage = function () {
@@ -29,20 +32,17 @@ const CoursePage = function () {
   useEffect(() => {
     getCourse();
   }, [id]);
-
-  const courseId =Number(id);
-  console.log("CourseId: ",courseId);
-console.log(typeof(courseId))
+  const courseId = Number(id);
   const handleLikeCourse = async () => {
     if (liked === true) {
       await courseService.removeLike(courseId);
-      console.log(courseId)
+
       setLiked(false);
 
     } else {
 
       await courseService.like(courseId);
-      console.log(courseId)
+
       setLiked(true);
     }
   };
@@ -57,7 +57,7 @@ console.log(typeof(courseId))
       setFavorited(true);
     }
   };
-
+  if (course === undefined) return <PageSpinner />;
   return (
     <>
       <Head>
@@ -77,7 +77,7 @@ console.log(typeof(courseId))
         <Container className={styles.courseInfo}>
           <p className={styles.courseTitle}>{course?.name}</p>
           <p className={styles.courseDescription}>{course?.synopsis}</p>
-          <Button outline className={styles.courseBtn}>
+          <Button outline className={styles.courseBtn} disabled={course?.episodes?.length === 0 ? true : false} >
             ASSISTIR AGORA!
             <img
               src="/buttonPlay.svg"
@@ -118,6 +118,21 @@ console.log(typeof(courseId))
             )}
           </div>
         </Container>
+        <Container className={styles.episodeInfo}>
+          <p className={styles.episodeDivision}>EPISODIOS</p>
+          <p className={styles.episodeLength}>{course?.episodes?.length} Episodios
+          </p>
+          {course?.episodes?.length === 0 ? (
+	<p>
+	  <strong>Não temos episódios ainda, volte outra hora! &#x1F606;&#x1F918;</strong>
+  </p>
+) : (
+	course?.episodes?.map((episode) => (
+	  <EpisodeList key={episode.id} episode={episode} />
+  ))
+)}
+        </Container>
+        <Footer/>
       </main>
     </>
   );
