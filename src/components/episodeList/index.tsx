@@ -1,11 +1,14 @@
-import { EpisodeType } from "@/services/courseService";
+import { CourseType, EpisodeType } from "@/services/courseService";
 import styles from "./styles.module.scss";
+import { useRouter } from "next/router";
 
 interface props {
-    episode: EpisodeType
+    episode: EpisodeType;
+    course:CourseType;
 }
 
-const EpisodeList = function ({ episode }: props) {
+const EpisodeList = function ({ episode,course }: props) {
+    const router = useRouter();
     const handleSecondsToMin = (totalSeconds:number)=>{
 const minutes = Math.floor(totalSeconds/60)
 
@@ -17,8 +20,14 @@ function toString (num:number){
 const result = `${toString(minutes)}:${toString(seconds)}`
 return result
     }
+
+    const handleEpisodePlayer = () => {
+        router.push(
+          `/courses/episode/${episode.order - 1}?courseid=${course.id}`
+        );
+      };
     return <>
-        <div className={styles.episodeCard}>
+        <div className={styles.episodeCard} onClick={handleEpisodePlayer} >
             <div className={styles.episodeOrderTime}>
                 <p className={styles.episodeOrder}>Episodio n° {episode.order}</p>
                 <p className={styles.episodeOrder}>{handleSecondsToMin(episode.secondsLong)}</p>
