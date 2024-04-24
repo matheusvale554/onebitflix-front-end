@@ -10,20 +10,19 @@ interface props {
 const EpisodeList = function ({ episode,course }: props) {
     const router = useRouter();
     const handleSecondsToMin = (totalSeconds:number)=>{
-const minutes = Math.floor(totalSeconds/60)
+const minutes = Math.floor(totalSeconds/60);
 
 const seconds = totalSeconds % 60;
 
 function toString (num:number){
-    return num.toString().padStart(2,"0")
+    return num.toString().padStart(2,"0");
 }
 const result = `${toString(minutes)}:${toString(seconds)}`
 return result
     }
-
     const handleEpisodePlayer = () => {
         router.push(
-          `/courses/episode/${episode.order - 1}?courseid=${course.id}`
+          `/courses/episode/${episode.order - 1}?courseid=${course.id}&episodeid=${episode.id}`
         );
       };
     return <>

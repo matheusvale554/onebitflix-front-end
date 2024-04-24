@@ -8,6 +8,7 @@ export type EpisodeType = {
     videoUrl: string;
     secondsLong: number;
   };
+  
   export type CourseType = {
     id: number;
     name: string;
@@ -156,7 +157,7 @@ export type EpisodeType = {
 
       getEpisodes: async (id: number | string) => {
         const token = sessionStorage.getItem("onebitflix-token");
-
+        
         const res = await api
         .get(`/courses/${id}`, {
         headers: {
