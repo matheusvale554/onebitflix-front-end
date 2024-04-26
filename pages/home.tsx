@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import HeaderAuth from "@/components/common/headerAuth"
 import FeaturedSection from "@/components/homeAuth/featuredSection";
@@ -8,14 +8,22 @@ import FavoriteCategory from "@/components/headerNoAuth/favoriteCategory";
 import FeaturedCategory from "@/components/homeAuth/featuredCategory";
 import ListCategories from "@/components/homeAuth/listCategories";
 import Footer from "@/components/common/footer";
+import PageSpinner from "@/components/common/spinner";
 
 const HomeAuth = function () {
   const router = useRouter()
-  useEffect(() => {
-    if (sessionStorage.getItem("onebitflix-token")) {
-      router.push("/home");
-    }
-  }, []);
+const [loading,setLoading] = useState(true);
+useEffect(() => {
+  if (!sessionStorage.getItem("onebitflix-token")) {
+    router.push("/login");
+  } else {
+    setLoading(false);
+  }
+}, []);
+if(loading){
+  return <PageSpinner/>
+}
+
   return (
     <>
       <Head>

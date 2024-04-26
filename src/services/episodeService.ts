@@ -20,7 +20,7 @@ const watchEpisodeService ={
 
         return error.response;
       });
-console.log("ep id aqui" + episodeId)
+
     return res;
     
       },
